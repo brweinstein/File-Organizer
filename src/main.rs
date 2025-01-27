@@ -1,11 +1,13 @@
-use std::fs;
+use std::env;
+
+mod globals;
+mod utils;
 
 fn main() {
-    let entries = fs::read_dir("C:/Users/Brwei/Downloads").unwrap();
-
-    let paths: Vec<_> = entries.map(|entry| entry.unwrap().path()).collect();
-
-    for path in &paths {
-        println!("{:?}", path);
-    }
+    let args: Vec<String> = env::args().collect();
+    let args: Vec<&str> = args.iter().map(|s| s.as_str()).collect();
+    let dir = utils::get_dir(&args);
+    utils::set_write_perms(&dir);
+    utils::create_dirs(&dir);
+    utils::organize(&dir);
 }

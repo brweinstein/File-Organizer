@@ -1,1 +1,1 @@
-readme
+A simple file organizer adapted from https://github.com/ghaerdi/file-organizer/tree/main
